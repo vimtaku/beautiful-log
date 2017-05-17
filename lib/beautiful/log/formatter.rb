@@ -68,7 +68,7 @@ module Beautiful
         file_line = backtrace_lines.find do |line|
           (only_project_code && project_code?(line)) && !ignore_path?(line)
         end
-        file_line&.sub!(bundle_install_path, '') if @shrink_bundle_path
+        file_line.try("sub!", bundle_install_path, '') if @shrink_bundle_path
         apply_styles(omit_project_path(file_line), @occurence_line) if file_line.present?
       end
 

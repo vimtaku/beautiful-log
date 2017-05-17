@@ -10,7 +10,7 @@ module Beautiful
         end
 
         def project_code?(backtrace_line)
-          backtrace_line.index(Rails.root.to_s)&.zero?
+          backtrace_line.index(Rails.root.to_s).to_i == 0
         end
 
         def ignore_path?(backtrace_line)
